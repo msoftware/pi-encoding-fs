@@ -142,6 +142,12 @@ Known trade-offs of this approach (no upstream change required):
   encoding-aware preview, which reads through `operations.readFile` and therefore uses the
   configured encoding.
 
+## Integration test
+
+`scripts/Test-PiEncoding.ps1` runs the extension's tools against real files from
+[Ousret/char-dataset](https://github.com/Ousret/char-dataset) and verifies the bytes on disk.
+See [scripts/README.md](scripts/README.md).
+
 ## License
 
 MIT
