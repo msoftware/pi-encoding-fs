@@ -64,6 +64,22 @@ zweite Config anders zu behandeln, verwende `overrides`.
 - `overrides`: Glob-Regeln relativ zum Verzeichnis der Config-Datei; die spezifischste Regel
   gewinnt.
 
+### Beispiel: ein ganzer Verzeichnisbaum in ISO-8859-1
+
+Sind alle Dateien eines Verzeichnisses inklusive aller Unterverzeichnisse in ISO-8859-1
+kodiert, genügt eine einzige Datei in diesem Verzeichnis:
+
+```json
+{ "sourceEncoding": "ISO-8859-1" }
+```
+
+- Weder `overrides` noch weitere Configs in Unterverzeichnissen sind nötig.
+- Reine ASCII-Dateien sind nicht betroffen; dank `utf8Guard` bleiben Dateien, die bereits
+  UTF-8 sind, UTF-8.
+- Neue Dateien unterhalb dieses Verzeichnisses werden in ISO-8859-1 geschrieben.
+- Nach dem Anlegen oder Ändern einer Config eine neue Pi-Session starten oder `/reload`
+  ausführen.
+
 ### Unterstützte Encodings
 
 `UTF-8`, `GB18030`, `GBK`, `GB2312`, `ISO-8859-1`, `ISO-8859-15`, `Windows-1252`.

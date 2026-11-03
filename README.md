@@ -55,6 +55,20 @@ config). To treat individual paths differently without a second config, use `ove
   written back as UTF-8. Set `false` to always apply the configured encoding.
 - `overrides`: glob rules relative to the config file's directory; most specific wins.
 
+### Example: a whole directory tree in ISO-8859-1
+
+If all files in a directory, including all subdirectories, are ISO-8859-1, a single file in
+that directory is enough:
+
+```json
+{ "sourceEncoding": "ISO-8859-1" }
+```
+
+- No `overrides` and no further configs in subdirectories are needed.
+- Pure ASCII files are unaffected; thanks to `utf8Guard`, files that are already UTF-8 stay UTF-8.
+- New files created below this directory are written as ISO-8859-1.
+- After adding or changing a config, start a new Pi session or run `/reload`.
+
 ### Supported encodings
 
 `UTF-8`, `GB18030`, `GBK`, `GB2312`, `ISO-8859-1`, `ISO-8859-15`, `Windows-1252`.
