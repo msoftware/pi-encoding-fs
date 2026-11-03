@@ -1,5 +1,7 @@
 # pi-encoding-fs
 
+**English** | [Deutsch](README.de.md)
+
 Encoding-aware `read` / `write` / `edit` / `grep` for [Pi](https://github.com/earendil-works).
 Transparently handles GB18030 / GBK / GB2312 and ISO-8859-1 / ISO-8859-15 / Windows-1252
 files while preserving Pi's native TUI
@@ -27,8 +29,13 @@ if it ever reads garbled Chinese or broken umlauts. The note is constant so prom
 
 ## Configuration
 
-Place `.encoding-converter.json` in any directory. It applies to files at or below it,
-unless a deeper config overrides it.
+Place `.encoding-converter.json` in any directory. It applies to files in that directory
+and in all of its subdirectories, at any depth, unless a deeper config overrides it.
+
+Configs are **not merged**: for each file only the nearest config counts. A config in a
+subdirectory fully replaces the one above it, including its `overrides`, `utf8Guard` and
+`confidenceThreshold` (unset values fall back to the built-in defaults, not to the parent
+config). To treat individual paths differently without a second config, use `overrides`.
 
 ```json
 {
